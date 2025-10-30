@@ -1,5 +1,7 @@
 import streamlit as st
+from  backend.utilis.api_call import get_exercises
 
+exercises = get_exercises()
 st.title("🏋️ Crea la tua scheda di allenamento")
 
 plan_name = st.text_input("Nome della scheda")
@@ -16,7 +18,7 @@ if plan_name:  # mostri la parte successiva solo dopo aver inserito un nome
             for i in range(num_esercizi):
                 col1, col2, col3, col4 = st.columns([3, 1, 1, 2])
                 with col1:
-                    esercizio = st.text_input(f"Esercizio {i+1}", key=f"ex_name_{giorno}_{i}")
+                    esercizio = st.selectbox(f"Esercizio {i+1}", exercises, key=f"ex_name_{giorno}_{i}")
                 with col2:
                     serie = st.number_input("Serie", 1, 10, 3, key=f"serie_{giorno}_{i}")
                 with col3:

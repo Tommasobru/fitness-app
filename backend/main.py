@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import exercises
+from backend.routers import exercises
 
 app = FastAPI(title = "Fitness App Backend")
 

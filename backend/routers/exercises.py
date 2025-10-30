@@ -1,9 +1,10 @@
+from random import paretovariate
 from fastapi import APIRouter
 import os
 import requests
 
 
-router = APIRouter()
+router = APIRouter(prefix="/api", tags=["Exercises"])
 rapid_api_key = os.getenv("RAPID_API_KEY")
 
 @router.get("/exercises")
@@ -19,4 +20,6 @@ async def get_exercises():
         return response.json()
     else:
         return {"error": "Failed to fetch exercises"}
+    
+
     
